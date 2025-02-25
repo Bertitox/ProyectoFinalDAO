@@ -1,5 +1,6 @@
 package org.example.grandaoalbertodaniel.Service;
 
+import org.bson.types.ObjectId;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesJPA.PeliculaRepository;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesMongo.PeliculaMongoRepository;
@@ -38,7 +39,7 @@ public class Servicio {
         peliculaMongoRepository.save(pelicula);
     }
 
-    public void deleteMongoPelicula(Integer id) {
+    public void deleteMongoPelicula(String id) {
         Pelicula pelicula = peliculaMongoRepository.findById(id).get();
         peliculaMongoRepository.delete(pelicula);
     }

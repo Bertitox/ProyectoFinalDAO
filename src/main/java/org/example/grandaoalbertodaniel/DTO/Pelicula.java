@@ -18,7 +18,7 @@ public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private String id;
 
     @Size(max = 255)
     @NotNull

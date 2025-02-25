@@ -1,5 +1,6 @@
 package org.example.grandaoalbertodaniel.Controlador;
 
+import org.bson.types.ObjectId;
 import org.example.grandaoalbertodaniel.Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
@@ -83,7 +84,7 @@ public class Controlador {
 
     // Eliminar película
     @DeleteMapping("/mongo/{id}")
-    public ResponseEntity<?> deleteMongo(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteMongo(@PathVariable String id) {
         servicio.deleteMongoPelicula(id);
         return ResponseEntity.ok().body("Pelicula eliminada");
     }
