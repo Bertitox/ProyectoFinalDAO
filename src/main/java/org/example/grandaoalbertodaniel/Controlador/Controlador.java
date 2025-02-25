@@ -30,17 +30,16 @@ public class Controlador {
         return ResponseEntity.ok(pelicula);
     }
 
-    //MODIFICAR UN LIBRO CON PARÁMETROS
-    @PutMapping
-    public ResponseEntity update(@Valid @RequestBody Libro libro) {
-        librosRepository.save(libro);
-        return ResponseEntity.ok(libro);
+    @PutMapping("/jpa")
+    public ResponseEntity update(@Valid @RequestBody Pelicula pelicula) {
+        peliculaJPARepository.save(pelicula);
+        return ResponseEntity.ok(pelicula);
     }
 
-    @DeleteMapping("/{isbn}")
-    public ResponseEntity delete(@PathVariable String isbn) {
-        Libro libro = librosRepository.findById(isbn).get();
-        librosRepository.delete(libro);
-        return ResponseEntity.ok(libro);
+    @DeleteMapping("/jpa/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        Pelicula pelicula = peliculaJPARepository.findById(id).get();
+        peliculaJPARepository.delete(pelicula);
+        return ResponseEntity.ok(pelicula);
     }
 }
