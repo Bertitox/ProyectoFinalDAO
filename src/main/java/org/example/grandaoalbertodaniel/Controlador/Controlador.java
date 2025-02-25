@@ -19,6 +19,8 @@ public class Controlador {
         this.peliculaJPARepository = peliculaJPARepository;
     }
 
+    //CONTROLADOR DE MYSQL
+
     @GetMapping("/jpa")
     public ResponseEntity get() {
         return ResponseEntity.ok(peliculaJPARepository.findAll());
@@ -42,4 +44,7 @@ public class Controlador {
         peliculaJPARepository.delete(pelicula);
         return ResponseEntity.ok(pelicula);
     }
+
+    //CONTROLADOR DE MONGODB
+
 }
