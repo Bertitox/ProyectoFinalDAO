@@ -1,12 +1,11 @@
 package org.example.grandaoalbertodaniel.Controlador;
 
 import org.example.grandaoalbertodaniel.DTO.PeliculaFichero;
-import org.example.grandaoalbertodaniel.DTO.PeliculaMongo;
+import org.example.grandaoalbertodaniel.DTO.Pelicula;
 import org.example.grandaoalbertodaniel.Service.PeliculaFileService;
 import org.example.grandaoalbertodaniel.Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
-import org.example.grandaoalbertodaniel.DTO.Pelicula;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesJPA.PeliculaRepository;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesMongo.PeliculaMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,14 +74,14 @@ public class Controlador {
 
     //Crear Película
     @PostMapping("/mongo")
-    public ResponseEntity<?> guardarMongo(@RequestBody PeliculaMongo pelicula) {
+    public ResponseEntity<?> guardarMongo(@RequestBody Pelicula pelicula) {
         servicio.saveMongoPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
 
     //Actualizar Película
     @PutMapping("/mongo")
-    public ResponseEntity<?> updateMongo(@Valid @RequestBody PeliculaMongo pelicula) {
+    public ResponseEntity<?> updateMongo(@Valid @RequestBody Pelicula pelicula) {
         servicio.saveMongoPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
