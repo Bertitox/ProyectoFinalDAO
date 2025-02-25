@@ -1,6 +1,6 @@
 package org.example.grandaoalbertodaniel.Controlador;
 
-import Service.Service;
+import Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
@@ -23,8 +23,9 @@ public class Controlador {
 
     @Autowired
     PeliculaRepository peliculaJPARepository;
-    @Autowired
-    Service service;
+
+
+    private Servicio servicio = new Servicio();
 
     @Autowired
     public Controlador(PeliculaMongoRepository peliculaMongoRepository, PeliculaRepository peliculaJPARepository, MongoClient mongo) {
@@ -37,24 +38,24 @@ public class Controlador {
 
     @GetMapping("/jpa")
     public ResponseEntity<List<?>> get() {
-        return ResponseEntity.ok(service.getJPAPelicula());
+        return ResponseEntity.ok(servicio.getJPAPelicula());
     }
 
     @PostMapping("/jpa")
     public ResponseEntity<?> post(@Valid @RequestBody Pelicula pelicula) {
-        service.saveJPAPelicula(pelicula);
+        servicio.saveJPAPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
 
     @PutMapping("/jpa")
     public ResponseEntity<?> update(@Valid @RequestBody Pelicula pelicula) {
-        service.updateJPAPelicula(pelicula);
+        servicio.updateJPAPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
 
     @DeleteMapping("/jpa/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
-        service.deleteJPAPelicula(id);
+        servicio.deleteJPAPelicula(id);
         return ResponseEntity.ok().body("Pelicula eliminada");
     }
 
@@ -63,27 +64,27 @@ public class Controlador {
     //Select ALL Películas
     @GetMapping("/mongo")
     public ResponseEntity<List<?>> obtenerMongo() {
-        return ResponseEntity.ok(service.getMongoPelicula());
+        return ResponseEntity.ok(servicio.getMongoPelicula());
     }
 
     //Crear Película
     @PostMapping("/mongo")
     public ResponseEntity<?> guardarMongo(@RequestBody Pelicula pelicula) {
-        service.saveMongoPelicula(pelicula);
+        servicio.saveMongoPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
 
     //Actualizar Película
     @PutMapping("/mongo")
     public ResponseEntity<?> updateMongo(@Valid @RequestBody Pelicula pelicula) {
-        service.saveMongoPelicula(pelicula);
+        servicio.saveMongoPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
 
     // Eliminar película
     @DeleteMapping("/mongo/{id}")
     public ResponseEntity<?> deleteMongo(@PathVariable Integer id) {
-        service.deleteMongoPelicula(id);
+        servicio.deleteMongoPelicula(id);
         return ResponseEntity.ok().body("Pelicula eliminada");
     }
 }

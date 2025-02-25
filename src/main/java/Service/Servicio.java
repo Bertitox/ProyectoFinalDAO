@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class Service {
+public class Servicio {
     @Autowired
     PeliculaMongoRepository peliculaMongoRepository;
 
