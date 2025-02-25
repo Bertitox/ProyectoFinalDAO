@@ -85,6 +85,12 @@
             <version>4.4.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
+
 
         <!-- Para responder en XML  -->
         <!-- https://howtodoinjava.com/spring-boot/xml-request-response-body/-->
