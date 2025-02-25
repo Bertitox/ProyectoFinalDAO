@@ -2,7 +2,7 @@ package org.example.grandaoalbertodaniel.Service;
 
 import org.bson.types.ObjectId;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
-import org.example.grandaoalbertodaniel.DTO.PeliculaMongo;
+import org.example.grandaoalbertodaniel.DTO.Pelicula;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesJPA.PeliculaRepository;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesMongo.PeliculaMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,20 +36,21 @@ public class Servicio {
     }
 
     //MONGO
-    public void saveMongoPelicula(PeliculaMongo pelicula) {
+    public void saveMongoPelicula(Pelicula pelicula) {
         peliculaMongoRepository.save(pelicula);
     }
 
     public void deleteMongoPelicula(String id) {
-        PeliculaMongo pelicula = peliculaMongoRepository.findById(id).get();
+        Pelicula pelicula = peliculaMongoRepository.findById(id).get();
+
         peliculaMongoRepository.delete(pelicula);
     }
 
-    public void updateMongoPelicula(PeliculaMongo pelicula) {
+    public void updateMongoPelicula(Pelicula pelicula) {
         peliculaMongoRepository.save(pelicula);
     }
 
-    public List<PeliculaMongo> getMongoPelicula() {
+    public List<Pelicula> getMongoPelicula() {
         return peliculaMongoRepository.findAll();
     }
 
