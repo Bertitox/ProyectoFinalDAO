@@ -1,6 +1,8 @@
 package org.example.grandaoalbertodaniel.Controlador;
 
-import org.bson.types.ObjectId;
+import org.example.grandaoalbertodaniel.DTO.PeliculaFichero;
+import org.example.grandaoalbertodaniel.DTO.PeliculaMongo;
+import org.example.grandaoalbertodaniel.Service.PeliculaFileService;
 import org.example.grandaoalbertodaniel.Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
@@ -24,6 +26,9 @@ public class Controlador {
 
     @Autowired
     PeliculaRepository peliculaJPARepository;
+
+    @Autowired
+    private PeliculaFileService peliculaFileService;
 
     @Autowired
     private Servicio servicio;
@@ -70,14 +75,14 @@ public class Controlador {
 
     //Crear Película
     @PostMapping("/mongo")
-    public ResponseEntity<?> guardarMongo(@RequestBody Pelicula pelicula) {
+    public ResponseEntity<?> guardarMongo(@RequestBody PeliculaMongo pelicula) {
         servicio.saveMongoPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
 
     //Actualizar Película
     @PutMapping("/mongo")
-    public ResponseEntity<?> updateMongo(@Valid @RequestBody Pelicula pelicula) {
+    public ResponseEntity<?> updateMongo(@Valid @RequestBody PeliculaMongo pelicula) {
         servicio.saveMongoPelicula(pelicula);
         return ResponseEntity.ok(pelicula);
     }
@@ -87,5 +92,20 @@ public class Controlador {
     public ResponseEntity<?> deleteMongo(@PathVariable String id) {
         servicio.deleteMongoPelicula(id);
         return ResponseEntity.ok().body("Pelicula eliminada");
+    }
+
+    @GetMapping("/fichero")
+    public List<PeliculaFichero> obtenerPeliculas() {
+        return peliculaFileService.obtenerPeliculas();
+    }
+
+    @PostMapping("/fichero/agregar")
+    public void agregarPelicula(@RequestBody PeliculaFichero pelicula) {
+        peliculaFileService.agregarPelicula(pelicula);
+    }
+
+    @PostMapping("/fichero/guardar")
+    public void guardarPeliculas(@RequestBody List<PeliculaFichero> peliculas) {
+        peliculaFileService.guardarPeliculas(peliculas);
     }
 }
