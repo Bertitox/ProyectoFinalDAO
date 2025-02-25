@@ -1,4 +1,4 @@
-package Service;
+package org.example.grandaoalbertodaniel.Service;
 
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesJPA.PeliculaRepository;

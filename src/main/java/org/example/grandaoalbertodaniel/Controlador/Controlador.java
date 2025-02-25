@@ -1,6 +1,6 @@
 package org.example.grandaoalbertodaniel.Controlador;
 
-import Service.Servicio;
+import org.example.grandaoalbertodaniel.Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
@@ -24,8 +24,8 @@ public class Controlador {
     @Autowired
     PeliculaRepository peliculaJPARepository;
 
-
-    private Servicio servicio = new Servicio();
+    @Autowired
+    private Servicio servicio;
 
     @Autowired
     public Controlador(PeliculaMongoRepository peliculaMongoRepository, PeliculaRepository peliculaJPARepository, MongoClient mongo) {
