@@ -2,7 +2,6 @@ package org.example.grandaoalbertodaniel.Controlador;
 
 import org.example.grandaoalbertodaniel.DTO.PeliculaFichero;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
-import org.example.grandaoalbertodaniel.Service.PeliculaFileService;
 import org.example.grandaoalbertodaniel.Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
@@ -18,29 +17,10 @@ import java.util.List;
 @RequestMapping("/grandao")
 public class Controlador {
 
-    private final MongoClient mongo;
-
-    @Autowired
-    PeliculaMongoRepository peliculaMongoRepository;
-
-    @Autowired
-    PeliculaRepository peliculaJPARepository;
-
-    @Autowired
-    private PeliculaFileService peliculaFileService;
-
     @Autowired
     private Servicio servicio;
 
-    @Autowired
-    public Controlador(PeliculaMongoRepository peliculaMongoRepository, PeliculaRepository peliculaJPARepository, MongoClient mongo) {
-        this.peliculaMongoRepository = peliculaMongoRepository;
-        this.peliculaJPARepository = peliculaJPARepository;
-        this.mongo = mongo;
-    }
-
-    //CONTROLADOR DE MYSQL
-
+    //JPA
     @GetMapping("/jpa")
     public ResponseEntity<List<?>> get() {
         return ResponseEntity.ok(servicio.getJPAPelicula());
@@ -64,7 +44,7 @@ public class Controlador {
         return ResponseEntity.ok().body("Pelicula eliminada");
     }
 
-    //CONTROLADOR DE MONGODB
+    //MONGODB
 
     //Select ALL Películas
     @GetMapping("/mongo")
@@ -93,18 +73,15 @@ public class Controlador {
         return ResponseEntity.ok().body("Pelicula eliminada");
     }
 
+    //TXT
+
     @GetMapping("/fichero")
     public List<PeliculaFichero> obtenerPeliculas() {
-        return peliculaFileService.obtenerPeliculas();
+        return servicio.obtenerPeliculas();
     }
 
-    @PostMapping("/fichero/agregar")
+    @PostMapping("/fichero")
     public void agregarPelicula(@RequestBody PeliculaFichero pelicula) {
-        peliculaFileService.agregarPelicula(pelicula);
-    }
-
-    @PostMapping("/fichero/guardar")
-    public void guardarPeliculas(@RequestBody List<PeliculaFichero> peliculas) {
-        peliculaFileService.guardarPeliculas(peliculas);
+        servicio.agregarPelicula(pelicula);
     }
 }
