@@ -58,17 +58,10 @@ public class Servicio {
     }
 
     //TXT
-    // Guardar lista de películas en fichero
-    public void guardarPeliculas(List<PeliculaFichero> peliculas) {
-        peliculaFileDAO.guardarPeliculas(peliculas);
-    }
-
-    // Leer lista de películas desde el fichero
     public List<PeliculaFichero> obtenerPeliculas() {
         return peliculaFileDAO.leerPeliculas();
     }
 
-    // Agregar una nueva película al fichero
     public void agregarPelicula(PeliculaFichero pelicula) {
         peliculaFileDAO.agregarPelicula(pelicula);
     }
