@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<peliculas>
+    <pelicula>
+        <director>Francis Ford Coppola</director>
+        <duracion>175</duracion>
+        <estreno>1972-03-24</estreno>
+        <genero>Crimen</genero>
+        <id>1</id>
+        <titulo>El Padrino</titulo>
+    </pelicula>
+    <pelicula>
+        <director>Directorrrr</director>
+        <duracion>290</duracion>
+        <estreno>2005-12-3</estreno>
+        <genero>Fantasía</genero>
+        <id>2</id>
+        <titulo>Pelicula de ejemplo</titulo>
+    </pelicula>
+    <pelicula>
+        <director>Directorrrr</director>
+        <duracion>290</duracion>
+        <estreno>2005-12-3</estreno>
+        <genero>Fantasía</genero>
+        <id>2</id>
+        <titulo>Pelicula de ejempsssslo</titulo>
+    </pelicula>
+</peliculas>

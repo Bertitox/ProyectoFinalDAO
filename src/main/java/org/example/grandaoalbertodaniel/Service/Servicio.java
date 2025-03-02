@@ -2,8 +2,10 @@ package org.example.grandaoalbertodaniel.Service;
 
 import org.bson.types.ObjectId;
 import org.example.grandaoalbertodaniel.DAOs.DAOTXT.PeliculaFileDAO;
+import org.example.grandaoalbertodaniel.DAOs.DAOXML.PeliculaXMLDAO;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
 import org.example.grandaoalbertodaniel.DTO.PeliculaFichero;
+import org.example.grandaoalbertodaniel.DTO.PeliculaXML;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesJPA.PeliculaRepository;
 import org.example.grandaoalbertodaniel.Interfaces.InterfacesMongo.PeliculaMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ public class Servicio {
     PeliculaRepository peliculaJPARepository;
 
     PeliculaFileDAO peliculaFileDAO = new PeliculaFileDAO();  // Inicializamos el DAO
+    PeliculaXMLDAO peliculaXMLDAO = new PeliculaXMLDAO();
 
     //JPA
     public void saveJPAPelicula(Pelicula pelicula) {
@@ -64,6 +67,15 @@ public class Servicio {
 
     public void agregarPelicula(PeliculaFichero pelicula) {
         peliculaFileDAO.agregarPelicula(pelicula);
+    }
+
+    //XML
+    public List<PeliculaXML> obtenerPeliculasXML() {
+        return peliculaXMLDAO.leerPeliculas();
+    }
+
+    public void agregarPeliculaXML(PeliculaXML pelicula) {
+        peliculaXMLDAO.agregarPelicula(pelicula);
     }
 
 

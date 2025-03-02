@@ -2,6 +2,7 @@ package org.example.grandaoalbertodaniel.Controlador;
 
 import org.example.grandaoalbertodaniel.DTO.PeliculaFichero;
 import org.example.grandaoalbertodaniel.DTO.Pelicula;
+import org.example.grandaoalbertodaniel.DTO.PeliculaXML;
 import org.example.grandaoalbertodaniel.Service.Servicio;
 import com.mongodb.client.MongoClient;
 import jakarta.validation.Valid;
@@ -74,14 +75,26 @@ public class Controlador {
     }
 
     //TXT
-
     @GetMapping("/fichero")
     public List<PeliculaFichero> obtenerPeliculas() {
         return servicio.obtenerPeliculas();
     }
 
     @PostMapping("/fichero")
-    public void agregarPelicula(@RequestBody PeliculaFichero pelicula) {
+    public ResponseEntity<?> agregarPelicula(@RequestBody PeliculaFichero pelicula) {
         servicio.agregarPelicula(pelicula);
+        return ResponseEntity.ok().body("Pelicula agregada");
+    }
+
+    //XML
+    @GetMapping("/xml")
+    public List<PeliculaXML> obtenerPeliculasXML() {
+        return servicio.obtenerPeliculasXML();
+    }
+
+    @PostMapping("/xml")
+    public ResponseEntity<?> agregarPeliculaXML(@RequestBody PeliculaXML pelicula) {
+        servicio.agregarPeliculaXML(pelicula);
+        return ResponseEntity.ok().body("Pelicula agregada");
     }
 }
