@@ -75,14 +75,18 @@ public class Controlador {
     }
 
     //TXT
-    @GetMapping("/fichero")
+    @GetMapping("/txt")
     public List<PeliculaFichero> obtenerPeliculas() {
         return servicio.obtenerPeliculas();
     }
 
-    @PostMapping("/fichero")
+    @PostMapping("/txt")
     public ResponseEntity<?> agregarPelicula(@RequestBody PeliculaFichero pelicula) {
-        servicio.agregarPelicula(pelicula);
+        if(!servicio.validarIDFichero(pelicula)){
+            servicio.agregarPelicula(pelicula);
+        }else{
+            return ResponseEntity.ok().body("Pelicula con ID ya existente");
+        }
         return ResponseEntity.ok().body("Pelicula agregada");
     }
 
@@ -94,7 +98,11 @@ public class Controlador {
 
     @PostMapping("/xml")
     public ResponseEntity<?> agregarPeliculaXML(@RequestBody PeliculaXML pelicula) {
+        if(!servicio.validarIDXML(pelicula)){
         servicio.agregarPeliculaXML(pelicula);
+        }else{
+            return ResponseEntity.ok().body("Pelicula con ID ya existente");
+        }
         return ResponseEntity.ok().body("Pelicula agregada");
     }
 }

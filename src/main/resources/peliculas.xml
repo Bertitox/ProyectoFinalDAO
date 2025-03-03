@@ -24,4 +24,12 @@
         <id>2</id>
         <titulo>Pelicula de ejempsssslo</titulo>
     </pelicula>
+    <pelicula>
+        <director>Francis Ford Coppola</director>
+        <duracion>175</duracion>
+        <estreno>1972-03-24</estreno>
+        <genero>Crimen</genero>
+        <id>3</id>
+        <titulo>El Padrino</titulo>
+    </pelicula>
 </peliculas>

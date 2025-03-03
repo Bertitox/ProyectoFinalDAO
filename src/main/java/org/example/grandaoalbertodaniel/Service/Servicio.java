@@ -79,4 +79,21 @@ public class Servicio {
     }
 
 
+    public boolean validarIDFichero(PeliculaFichero pelicula) {
+        for (PeliculaFichero pf: peliculaFileDAO.leerPeliculas()) {
+            if(pf.getId().equals(pelicula.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean validarIDXML(PeliculaXML pelicula) {
+        for (PeliculaXML pf: peliculaXMLDAO.leerPeliculas()) {
+            if(pf.getId().equals(pelicula.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
