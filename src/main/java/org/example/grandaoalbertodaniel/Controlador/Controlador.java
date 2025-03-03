@@ -46,7 +46,6 @@ public class Controlador {
     }
 
     //MONGODB
-
     //Select ALL Películas
     @GetMapping("/mongo")
     public ResponseEntity<List<?>> obtenerMongo() {

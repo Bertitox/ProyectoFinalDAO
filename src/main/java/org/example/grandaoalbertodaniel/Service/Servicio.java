@@ -69,16 +69,6 @@ public class Servicio {
         peliculaFileDAO.agregarPelicula(pelicula);
     }
 
-    //XML
-    public List<PeliculaXML> obtenerPeliculasXML() {
-        return peliculaXMLDAO.leerPeliculas();
-    }
-
-    public void agregarPeliculaXML(PeliculaXML pelicula) {
-        peliculaXMLDAO.agregarPelicula(pelicula);
-    }
-
-
     public boolean validarIDFichero(PeliculaFichero pelicula) {
         for (PeliculaFichero pf: peliculaFileDAO.leerPeliculas()) {
             if(pf.getId().equals(pelicula.getId())) {
@@ -86,6 +76,15 @@ public class Servicio {
             }
         }
         return false;
+    }
+
+    //XML
+    public List<PeliculaXML> obtenerPeliculasXML() {
+        return peliculaXMLDAO.leerPeliculas();
+    }
+
+    public void agregarPeliculaXML(PeliculaXML pelicula) {
+        peliculaXMLDAO.agregarPelicula(pelicula);
     }
 
     public boolean validarIDXML(PeliculaXML pelicula) {
