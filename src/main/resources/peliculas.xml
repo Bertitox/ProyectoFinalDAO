@@ -40,4 +40,12 @@
         <id>4</id>
         <titulo>El Padrino</titulo>
     </pelicula>
+    <pelicula>
+        <director>Francis Ford Coppola</director>
+        <duracion>175</duracion>
+        <estreno>1972-03-24</estreno>
+        <genero>Crimen</genero>
+        <id>10</id>
+        <titulo>El PadrinoCLASE</titulo>
+    </pelicula>
 </peliculas>
